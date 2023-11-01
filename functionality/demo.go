@@ -20,3 +20,15 @@ var PostDemo = func(c *gin.Context) {
 var DeleteDemo = func(c *gin.Context) {
 	c.String(200, "Delete demo router")
 }
+
+var JsonDemo = func(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{ // 💯
+		"data": "<b>Hello world</b>",
+	})
+}
+
+var PureJsonDemo = func(c *gin.Context) {
+	c.PureJSON(http.StatusOK, gin.H{
+		"data": "<b>Hello world</b>",
+	})
+}

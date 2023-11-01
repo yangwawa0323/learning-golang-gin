@@ -22,7 +22,11 @@ func main() {
 		})
 	})
 
-	r.GET("/users", functionality.GetUsers)
+	// r.GET("/users", functionality.GetUsers)
+	r.GET("/users", functionality.GetUsersString)
+
+	r.GET("/json-demo", functionality.JsonDemo)
+	r.GET("/pure-json-demo", functionality.PureJsonDemo)
 
 	r.Run(":8081")
 }
