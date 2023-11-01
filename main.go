@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/yangwawa0323/learning-golang-gin/functionality"
 )
 
 func main() {
@@ -20,6 +21,8 @@ func main() {
 			"person": &person,
 		})
 	})
+
+	r.GET("/users", functionality.GetUsers)
 
 	r.Run(":8081")
 }
