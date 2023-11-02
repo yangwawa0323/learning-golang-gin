@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.51cloudclass.com gin course</title>
+</head>
+
+<body>
+    <div>
+
+        <ul>
+            {{range .}} <!-- .  c.HTML(,,data) -->
+            <li><span style="color:blue">Name : </span>{{.Name}} ,
+                <span>Age</span> {{.Age}}
+                <span>Email: </span>{{.Email}}
+            </li>
+            {{end}}
+        </ul>
+    </div>
+</body>
+
+</html>
