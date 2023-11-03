@@ -5,10 +5,16 @@ import (
 	// 	"html/template"
 	"github.com/gin-gonic/gin"
 	"github.com/yangwawa0323/learning-golang-gin/functionality"
+	"github.com/yangwawa0323/learning-golang-gin/middlewares"
 )
 
 func main() {
-	r := gin.Default()
+	// r := gin.Default()
+	r := gin.New()
+	r.Use(middlewares.MyLogger(), gin.Logger(), gin.Recovery())
+
+	// favicon.ico static file
+	r.StaticFile("/favicon.ico", "./favicon.ico")
 
 	r.LoadHTMLGlob("templates/*.html") //   template.
 
