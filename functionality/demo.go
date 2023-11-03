@@ -50,3 +50,20 @@ var FrontEndV1 = func(c *gin.Context) {
 var FrontEndV2 = func(c *gin.Context) {
 	c.HTML(http.StatusOK, "v2.html", nil)
 }
+
+var PostUserFavorites = func(c *gin.Context) {
+	favs := c.PostFormMap("favorites")
+	c.HTML(http.StatusOK, "user-favs.html", &favs)
+}
+
+var AdminSecret = func(c *gin.Context) {
+	c.String(http.StatusOK, "Secret page")
+}
+
+var AdminSummary = func(c *gin.Context) {
+	c.String(http.StatusOK, "Summary page")
+}
+
+var AdminTotal = func(c *gin.Context) {
+	c.String(http.StatusOK, "Total page")
+}
