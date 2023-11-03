@@ -13,6 +13,10 @@ func main() {
 	r := gin.New()
 	r.Use(middlewares.MyLogger(), gin.Logger(), gin.Recovery())
 
+	// use QPS limiter middleware
+	limit := middlewares.NewLimiter()
+	r.Use(limit.RateLimit(1, 3))
+
 	// favicon.ico static file
 	r.StaticFile("/favicon.ico", "./favicon.ico")
 
