@@ -32,3 +32,21 @@ var PureJsonDemo = func(c *gin.Context) {
 		"data": "<b>Hello world</b>",
 	})
 }
+
+// /frontend
+// /frontend-v2
+var FrontEnd = func(c *gin.Context) {
+	version := c.DefaultQuery("version", "v1")
+	if version == "v2" {
+		c.Redirect(http.StatusPermanentRedirect, "/frontend-v2")
+		return
+	}
+	c.Redirect(http.StatusTemporaryRedirect, "/frontend-v1")
+}
+
+var FrontEndV1 = func(c *gin.Context) {
+	c.HTML(http.StatusOK, "v1.html", nil)
+}
+var FrontEndV2 = func(c *gin.Context) {
+	c.HTML(http.StatusOK, "v2.html", nil)
+}

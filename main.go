@@ -3,19 +3,19 @@ package main
 import (
 	"net/http"
 	// 	"html/template"
+
 	"github.com/gin-gonic/gin"
 	"github.com/yangwawa0323/learning-golang-gin/functionality"
-	"github.com/yangwawa0323/learning-golang-gin/middlewares"
 )
 
 func main() {
-	// r := gin.Default()
-	r := gin.New()
-	r.Use(middlewares.MyLogger(), gin.Logger(), gin.Recovery())
+	r := gin.Default()
+	// r := gin.New()
+	// r.Use(middlewares.MyLogger(), gin.Logger(), gin.Recovery())
 
 	// use QPS limiter middleware
-	limit := middlewares.NewLimiter()
-	r.Use(limit.RateLimit(1, 3))
+	// limit := middlewares.NewLimiter()
+	// r.Use(limit.RateLimit(1, 3))
 
 	// favicon.ico static file
 	r.StaticFile("/favicon.ico", "./favicon.ico")
@@ -48,6 +48,11 @@ func main() {
 	r.GET("/should-bind-query", functionality.UserShouldBindParameter)
 
 	r.POST("/create-user", functionality.CreateUserFromJsonData)
+
+	r.GET("/frontend", functionality.FrontEnd)
+
+	r.GET("/frontend-v1", functionality.FrontEndV1)
+	r.GET("/frontend-v2", functionality.FrontEndV2)
 
 	r.Run(":8081")
 }
